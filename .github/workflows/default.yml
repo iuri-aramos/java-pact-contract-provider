@@ -15,18 +15,8 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: show env variables
-        run: 'echo "$ENV_PACT_BROKER_BASE_URL" | base64'
-        shell: bash
-        env:
-          ENV_PACT_BROKER_BASE_URL: ${{ secrets.ENV_PACT_BROKER_BASE_URL }}
-      - run: 'echo "$ENV_PACT_BROKER_TOKEN" | base64'
-        shell: bash
-        env:
-          ENV_PACT_BROKER_TOKEN: ${{ secrets.ENV_PACT_BROKER_TOKEN }}
-
       - name: Build and publish results
         env:
-          PACT_BROKER_BASE_URL: ${{secrets.ENV_PACT_BROKER_TOKEN}}
+          PACT_BROKER_BASE_URL: ${{secrets.ENV_PACT_BROKER_BASE_URL}}
           PACT_BROKER_TOKEN: ${{secrets.ENV_PACT_BROKER_TOKEN}}
         run: make build
