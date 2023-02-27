@@ -28,7 +28,7 @@
 <dependency>
     <groupId>au.com.dius.pact.provider</groupId>
     <artifactId>junit5spring</artifactId>
-    <version>4.4.3</version>
+    <version>4.4.7</version>
 </dependency>
 ```
 
