@@ -19,5 +19,3 @@ jobs:
           distribution: 'temurin'
       - name: Build and publish results
         run: make build
-
-  make-complete:
