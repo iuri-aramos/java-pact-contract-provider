@@ -16,10 +16,7 @@ jobs:
           distribution: 'temurin'
 
       - name: show env variables
-        env:
-          PACT_BROKER_BASE_URL: ${{secrets.ENV_PACT_BROKER_BASE_URL}}
-          PACT_BROKER_TOKEN: ${{secrets.ENV_PACT_BROKER_TOKEN}}
-      - run: 'echo "$ENV_PACT_BROKER_BASE_URL" | base64'
+        run: 'echo "$ENV_PACT_BROKER_BASE_URL" | base64'
         shell: bash
         env:
           SSH_KEY: ${{ secrets.ENV_PACT_BROKER_BASE_URL }}
