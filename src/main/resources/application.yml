@@ -1,0 +1,13 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_CONNECTION:mongodb://localhost:27017}
+      database: ${MONGODB_CONNECTION_NAME:Order}
+  mongodb:
+    embedded:
+      version: 4.0.21
