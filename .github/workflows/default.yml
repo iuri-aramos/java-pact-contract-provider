@@ -2,10 +2,6 @@ name: Java CI
 
 on: [push]
 
-env:
-  PACT_BROKER_BASE_URL: ${{secrets.ENV_PACT_BROKER_TOKEN}}
-  PACT_BROKER_TOKEN: ${{secrets.ENV_PACT_BROKER_TOKEN}}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,7 +16,16 @@ jobs:
           distribution: 'temurin'
 
       - name: show env variables
-        run: env
+        env:
+          PACT_BROKER_BASE_URL: ${{secrets.ENV_PACT_BROKER_BASE_URL}}
+          PACT_BROKER_TOKEN: ${{secrets.ENV_PACT_BROKER_TOKEN}}
+        run: |
+          echo "Hello World"
+          echo "This is a secret value: ENV_PACT_BROKER_BASE_URL"
+          echo "This is a secret value: $ENV_PACT_BROKER_TOKEN"
 
       - name: Build and publish results
+        env:
+          PACT_BROKER_BASE_URL: ${{secrets.ENV_PACT_BROKER_TOKEN}}
+          PACT_BROKER_TOKEN: ${{secrets.ENV_PACT_BROKER_TOKEN}}
         run: make build
