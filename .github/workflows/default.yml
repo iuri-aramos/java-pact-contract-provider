@@ -3,6 +3,7 @@ name: Java CI
 on: [push]
 
 env:
+  PACT_BROKER_BASE_URL: ${{secrets.ENV_PACT_BROKER_TOKEN}}
   PACT_BROKER_TOKEN: ${{secrets.ENV_PACT_BROKER_TOKEN}}
 
 jobs:
@@ -16,5 +17,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Build with Maven
-        run: mvn clean test
+      - name: Build and publish results
+        run: make build
+
+  make-complete:
